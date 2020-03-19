@@ -14,7 +14,7 @@ os.system("cd "+ECpath+"/batch/lib")
 os.system("jar -xvf pj_batch_dat.jar hibernate.cfg.xml ")
 tree = ET.parse('hibernate.cfg.xml')
 root = tree.getroot()
-#Remplacement du loguing et mot de passe dans hibernate.cfg.xml
+#Remplacement des champs pour la recette dans hibernate.cfg.xml
 root.findall(".//property")[2].text = "pj_admec"
 root.findall(".//property")[3].text = "PJ_ADMEC"
 tree.write('hibernate.cfg.xml')
