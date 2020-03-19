@@ -1,0 +1,97 @@
+<hibernate-configuration>
+    <session-factory>
+
+		
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=SCAN_DEV_PJZ.spid.log.intra.laposte.fr)(PORT=1559))(CONNECT_DATA=(SERVICE_NAME=D1PJZ_APP)))</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.username" update="yes">pj_admwa</property>
+		<property name="hibernate.connection.password" update="yes">PJ_ADMWA</property>
+		<property name="hibernate.cglib.use_reflection_optimizer">true</property>
+		<property name="hibernate.cache.use_second_level_cache">false</property>		
+
+		
+        <property name="dialect">net.sf.hibernate.dialect.OracleDialect</property>
+
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.transaction.factory_class">net.sf.hibernate.transaction.JDBCTransactionFactory</property>
+        
+        
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Accident.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/ActiviteAgent.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Agent.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Aide.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/sipreva/hibernate/ArretTravail.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Branche.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Consolidation.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Environnement.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Etablissement.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/EtatMateriel.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/EtatPhysique.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/FamilleFonction.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/FiliereFonction.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Fonction.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Grade.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/HistoStatutAccident.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Incompatibilite.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Lateralisation.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/LieuAccident.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Lot.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/MaterielMobilier.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/MaladiePro.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Metier.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/MetierFonction.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/MoyenLocomotion.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/MoyenLocomotion2RM.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/MppSecteur.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/NatureAccident.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/NatureFait.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/NatureLesion.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Profession.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Protection.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Parametre.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/PieceJointe.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Qualification.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/RegimeTravail.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/SecteurMedical.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/SiegeLesion.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/SituationFam.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/SituationProf.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/StatsIpp.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/StatsMp.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/Statut.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/StatutAccident.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/StatutLot.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/StatutPJ.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/SuiteAccident.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/TableReferentiel.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/TypeAccident.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/TypeContrat.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/TypeDocument.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/TypeEtablissement.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/TypeEnvironnement.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/sipreva/hibernate/VueDatesHistoStatutAcc.hbm.xml" />
+        
+        
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/ActionRisque.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/AbsenceSuspensivePenibilite.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/Campagne.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/CriterePerimetre.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/DomaineRisque.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/DureeMinimale.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/Exposition.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/ExpositionConsolidee.hbm.xml" />        
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/ExpositionDetaillee.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/ExpositionDetailleeConsolidee.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/ExpositionAction.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/ExpositionActionConsolidee.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/FacteurRisque.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/HistoAgent.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/HistoExpConsoSIGP.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/HistoEtablissement.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/HistoUtilisation.hbm.xml" />		
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/MotifHisto.hbm.xml" />
+		<mapping resource="fr/laposte/intra/rh/c3p/hibernate/PerimetreApplicabilite.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/SituationPenibilite.hbm.xml" />
+        <mapping resource="fr/laposte/intra/rh/c3p/hibernate/VueRequetePredefinieC3p.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>
