@@ -10,7 +10,7 @@ ECpath = sys.argv[1]+'_EC'
 if not os.path.isdir(ECpath):
     os.system("cp -r "+sys.argv[1]+" "+ECpath)
 else:
-	os.system("cp "+sys.argv[1]+"/batch/chargement_sipreva_fat.jar "+ECpath+"/batch/lib")
+	os.system("cp "+sys.argv[1]+"/batch/chargement_sipreva_fat.jar "+ECpath+"/batch")
 #"Extraction du fichier hibernate.cfg.xml du jar"
 os.system("jar -xvf "+ECpath+"/batch/chargement_sipreva_fat.jar hibernate.cfg.xml")
 tree = ET.parse('hibernate.cfg.xml')
