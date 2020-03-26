@@ -1,0 +1,3 @@
+Liste des Scrtipts:
+modification_grosJar.py : Script pour préparer le gros Jar à la mise à disposition à la recette cf "SI-PSST Déploiement et livraison.doc" paragraphe 2.5 
+modification_chargement_SIPREVA_fatjar.py : Script pour préparer le Chargement Sipreva gros Jar à la mise à disposition à la recette cf "SI-PSST Déploiement et livraison.doc" paragraphe 3.5
