@@ -1,6 +1,5 @@
 
 function liste() {
-    //var jsonString = {"lBatchs":[{"col1":"cell in row 0, column 0","col2":"cell in row 0, column 1 "},{"col1":"cell in row 1, column 0","col2":"cell in row 1, column 1 "}]};
 
     ListeBatch = listeDesBatchs();
     // get the reference for the body
@@ -8,14 +7,60 @@ function liste() {
 
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
+    tbl.setAttribute("class", "table");
     var tblBody = document.createElement("tbody");
+
+    var row = document.createElement("tr");
+
+    var cell = document.createElement("th");
+    var cellText = document.createTextNode("Nom");
+    cell.appendChild(cellText);
+    row.appendChild(cell);   
+
+    var cell = document.createElement("th");
+    var cellText = document.createTextNode("Description");
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+
+    var cell = document.createElement("th");
+    var cellText = document.createTextNode("Fréquence");
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+
+    var cell = document.createElement("th");
+    var cellText = document.createTextNode("Date");
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+
+    var cell = document.createElement("th");
+    var cellText = document.createTextNode("Information");
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+
+    tblBody.appendChild(row);
 
     // creating all cells s
     for (var i = 0; i < ListeBatch.lBatchs.length; i++) {
         // creates a table row
         if (verifFrequence(ListeBatch.lBatchs[i].Freq, ListeBatch.lBatchs[i].Date)) {
             var row = document.createElement("tr");
-
+            switch(ListeBatch.lBatchs[i].Freq){
+                case 'journalier':
+                    row.setAttribute("class", "warning");
+                    break;
+                case 'hebdomadaire':
+                    row.setAttribute("class", "info");
+                    break;
+                case 'mensuel':
+                    row.setAttribute("class", "active");
+                    break;
+                case 'biannuel':
+                    row.setAttribute("class", "danger");
+                    break;
+                case 'annuel':
+                    row.setAttribute("class", "success");
+                    break; 
+            }
             var cell = document.createElement("td");
             var cellText = document.createTextNode(ListeBatch.lBatchs[i].Nom);
             cell.appendChild(cellText);
@@ -41,6 +86,13 @@ function liste() {
             row.appendChild(cell);
             // add the row to the end of the table body
             tblBody.appendChild(row);
+
+            var cell = document.createElement("td");
+            var cellText = document.createTextNode(ListeBatch.lBatchs[i].Info);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+            // add the row to the end of the table body
+            tblBody.appendChild(row);
         }
     }
 
@@ -54,8 +106,8 @@ function liste() {
 
 function verifFrequence(freq, date) {
     var ladate = new Date()
-    ladate.setDate(1);
-    ladate.setMonth(10);
+    //ladate.setDate(1);
+    //ladate.setMonth(10);
     switch (freq) {
         case 'journalier':
             return true;
@@ -72,12 +124,12 @@ function verifFrequence(freq, date) {
             break;
         case 'biannuel':
             tabDate = date.split(',')
-            if (tabDate[0] == ladate.getDay() + "/" + ladate.getMonth() || tabDate[1] == ladate.getDay() + "/" + ladate.getMonth()) {
+            if (tabDate[0] == ladate.getDate() + "/" + (ladate.getMonth()+1) || tabDate[1] == ladate.getDate() + "/" + (ladate.getMonth()+1)) {
                 return true;
             }
             break;
         case 'annuel':
-            if (date == ladate.getDay() + "/" + ladate.getMonth()) {
+            if (date == ladate.getDate() + "/" + (ladate.getMonth()+1)) {
                 return true;
             }
             break;
@@ -95,157 +147,184 @@ function listeDesBatchs() {
                 "Nom": "pj_217",
                 "Desc": "Export SIGP",
                 "Freq": "journalier",
-                "Date": "-"
+                "Date": "-",
+                "Info" : "00:10"
             },
             {
                 "Nom": "pj_224",
                 "Desc": "Export EDU Quotidien",
                 "Freq": "journalier",
-                "Date": "-"
+                "Date": "-",
+                "Info" : "Après sauvegarde quotidienne"
             },
             {
                 "Nom": "pj_211",
                 "Desc": "Export SIDIS",
                 "Freq": "journalier",
-                "Date": "-"
+                "Date": "-",
+                "Info" : "Après pj_224"
             },
             {
                 "Nom": "pj_213",
                 "Desc": "Export EDU",
                 "Freq": "mensuel",
-                "Date": "1"
+                "Date": "1",
+                "Info" : "Premier jour du mois après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
             },
             {
                 "Nom": "pj_214",
                 "Desc": "Export Accidents Circulation SURF",
                 "Freq": "mensuel",
-                "Date": "1"
+                "Date": "1",
+                "Info" : "Premier jour du mois après pj_213"
             },
             {
                 "Nom": "pj_215",
                 "Desc": "Export Accidents Métier SURF",
                 "Freq": "mensuel",
-                "Date": "16"
+                "Date": "16",
+                "Info" : "Le 16 du mois : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
             },
             {
                 "Nom": "pj_218",
                 "Desc": "Export BSST",
                 "Freq": "mensuel",
-                "Date": "14"
+                "Date": "14",
+                "Info" : "Le 14 du mois : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
             },
             {
                 "Nom": "pj_221",
                 "Desc": "Import Utilisations",
                 "Freq": "mensuel",
-                "Date": "14"
+                "Date": "14",
+                "Info" : "Le 14 du mois après pj_218"
             },
             {
                 "Nom": "pj_225",
                 "Desc": "Envoi mail CE",
                 "Freq": "mensuel",
-                "Date": "1"
+                "Date": "1",
+                "Info" : "Premier jour du mois après pj_214"
             },
             {
                 "Nom": "pj_212",
                 "Desc": "Export NEMO RCT",
                 "Freq": "hebdomadaire",
-                "Date": "mardi"
+                "Date": "mardi",
+                "Info" : "Mardi après pj_211"
+
             },
             {
                 "Nom": "pj_209",
                 "Desc": "Import Absences SIGP",
                 "Freq": "hebdomadaire",
-                "Date": "dimanche"
+                "Date": "dimanche",
+                "Info" : "Dimanche après pj_211"
             },
             {
                 "Nom": "pj_210",
                 "Desc": "Import Absences GEP",
                 "Freq": "hebdomadaire",
-                "Date": "dimanche"
+                "Date": "dimanche",
+                "Info" : "Dimanche après pj_209"
             },
             {
                 "Nom": "pj_201",
                 "Desc": "Import Référentiels",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_211"
             },
             {
                 "Nom": "pj_220",
                 "Desc": "Import Fonctions Connexe",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_201"
             },
             {
                 "Nom": "pj_202",
                 "Desc": "Import Fonctions",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_220"
             },
             {
                 "Nom": "pj_203",
                 "Desc": "Import Entité Connexe",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_202"
             },
             {
                 "Nom": "pj_204",
                 "Desc": "Import Entité",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_203"
             },
             {
                 "Nom": "pj_205",
                 "Desc": "Import Agents Connexe",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_204"
             },
             {
                 "Nom": "pj_208",
                 "Desc": "Import Agents Sortis",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_205"
             },
             {
                 "Nom": "pj_207",
                 "Desc": "Import Agents Inactifs",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_208"
             },
             {
                 "Nom": "pj_206",
                 "Desc": "Import Agents actifs",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_207"
             },
             {
                 "Nom": "pj_219",
                 "Desc": "Import Historique Agents",
                 "Freq": "hebdomadaire",
-                "Date": "mercredi"
+                "Date": "mercredi",
+                "Info" : "Mercredi sur bonne fin pj_206"
             },
             {
                 "Nom": "pj_216",
                 "Desc": "Export Accidents Métiers SURF",
                 "Freq": "annuel",
-                "Date": "1/2"
+                "Date": "1/2",
+                "Info" : "Le 01/02 après pj_225"
             },
             {
                 "Nom": "pj_226",
                 "Desc": "Export Accidents comparaison CNAM",
                 "Freq": "annuel",
-                "Date": "19/0"
+                "Date": "20/1",
+                "Info" : "Le 20 janvier : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
             },
             {
                 "Nom": "pj_227",
                 "Desc": "Purge SIPREVA",
                 "Freq": "biannuel",
-                "Date": "0/4,0/10"
+                "Date": "1/5,1/11",
+                "Info" : "Le 01/05 et 01/11 après pj_225"
             },
             {
                 "Nom": "pj_228",
                 "Desc": "Purge SI-PENIB",
                 "Freq": "biannuel",
-                "Date": "0/4,0/10"
+                "Date": "1/5,1/11",
+                "Info" : "Le 01/05 et 01/11 après pj_227"
             }
 
         ]
