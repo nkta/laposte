@@ -1,3 +1,25 @@
+var ladate = new Date();
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const product = urlParams.get('dateBatch')
+
+if( product != null){
+    inputDate = product.split("-");
+    ladate.setDate(inputDate[2]);
+    ladate.setMonth(inputDate[1]-1);
+    ladate.setFullYear(inputDate[0]);
+}
+
+function titre(){
+    tab_jour = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
+    tab_mois = new Array("janvier","février","mars","avril","mai","juin","juillet","aout","septembre","octobre","novembre","décembre");
+    splitDate = ladate.toString().split(" ");
+    var body = document.getElementsByTagName("body")[0];
+    stitre = document.createElement("h1");
+    titreText = document.createTextNode("Liste des batchs du "+tab_jour[ladate.getDay()]+" "+splitDate[2]+" "+tab_mois[ladate.getMonth()]+" "+splitDate[3]);
+    stitre.appendChild(titreText);
+    body.appendChild(stitre);
+}
 
 function liste() {
 
@@ -105,7 +127,6 @@ function liste() {
 }
 
 function verifFrequence(freq, date) {
-    var ladate = new Date()
     //ladate.setDate(1);
     //ladate.setMonth(10);
     switch (freq) {
@@ -139,7 +160,6 @@ function verifFrequence(freq, date) {
     }
     return false;
 }
-
 function listeDesBatchs() {
     ListeBatch = {
         "lBatchs": [
@@ -163,48 +183,6 @@ function listeDesBatchs() {
                 "Freq": "journalier",
                 "Date": "-",
                 "Info" : "Après pj_224"
-            },
-            {
-                "Nom": "pj_213",
-                "Desc": "Export EDU",
-                "Freq": "mensuel",
-                "Date": "1",
-                "Info" : "Premier jour du mois après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
-            },
-            {
-                "Nom": "pj_214",
-                "Desc": "Export Accidents Circulation SURF",
-                "Freq": "mensuel",
-                "Date": "1",
-                "Info" : "Premier jour du mois après pj_213"
-            },
-            {
-                "Nom": "pj_215",
-                "Desc": "Export Accidents Métier SURF",
-                "Freq": "mensuel",
-                "Date": "16",
-                "Info" : "Le 16 du mois : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
-            },
-            {
-                "Nom": "pj_218",
-                "Desc": "Export BSST",
-                "Freq": "mensuel",
-                "Date": "14",
-                "Info" : "Le 14 du mois : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
-            },
-            {
-                "Nom": "pj_221",
-                "Desc": "Import Utilisations",
-                "Freq": "mensuel",
-                "Date": "14",
-                "Info" : "Le 14 du mois après pj_218"
-            },
-            {
-                "Nom": "pj_225",
-                "Desc": "Envoi mail CE",
-                "Freq": "mensuel",
-                "Date": "1",
-                "Info" : "Premier jour du mois après pj_214"
             },
             {
                 "Nom": "pj_212",
@@ -299,18 +277,46 @@ function listeDesBatchs() {
                 "Info" : "Mercredi sur bonne fin pj_206"
             },
             {
-                "Nom": "pj_216",
-                "Desc": "Export Accidents Métiers SURF",
-                "Freq": "annuel",
-                "Date": "1/2",
-                "Info" : "Le 01/02 après pj_225"
+                "Nom": "pj_213",
+                "Desc": "Export EDU",
+                "Freq": "mensuel",
+                "Date": "1",
+                "Info" : "Premier jour du mois après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
             },
             {
-                "Nom": "pj_226",
-                "Desc": "Export Accidents comparaison CNAM",
-                "Freq": "annuel",
-                "Date": "20/1",
-                "Info" : "Le 20 janvier : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
+                "Nom": "pj_214",
+                "Desc": "Export Accidents Circulation SURF",
+                "Freq": "mensuel",
+                "Date": "1",
+                "Info" : "Premier jour du mois après pj_213"
+            },
+            {
+                "Nom": "pj_215",
+                "Desc": "Export Accidents Métier SURF",
+                "Freq": "mensuel",
+                "Date": "16",
+                "Info" : "Le 16 du mois : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
+            },
+            {
+                "Nom": "pj_218",
+                "Desc": "Export BSST",
+                "Freq": "mensuel",
+                "Date": "14",
+                "Info" : "Le 14 du mois : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
+            },
+            {
+                "Nom": "pj_221",
+                "Desc": "Import Utilisations",
+                "Freq": "mensuel",
+                "Date": "14",
+                "Info" : "Le 14 du mois après pj_218"
+            },
+            {
+                "Nom": "pj_225",
+                "Desc": "Envoi mail CE",
+                "Freq": "mensuel",
+                "Date": "1",
+                "Info" : "Premier jour du mois après pj_214"
             },
             {
                 "Nom": "pj_227",
@@ -325,6 +331,20 @@ function listeDesBatchs() {
                 "Freq": "biannuel",
                 "Date": "1/5,1/11",
                 "Info" : "Le 01/05 et 01/11 après pj_227"
+            },
+            {
+                "Nom": "pj_216",
+                "Desc": "Export Accidents Métiers SURF",
+                "Freq": "annuel",
+                "Date": "1/2",
+                "Info" : "Le 01/02 après pj_225"
+            },
+            {
+                "Nom": "pj_226",
+                "Desc": "Export Accidents comparaison CNAM",
+                "Freq": "annuel",
+                "Date": "20/1",
+                "Info" : "Le 20 janvier : après pj_212 si mardi, pj_219 si mercredi, pj_210 si dimanche ou pj_211 les autres jours"
             }
 
         ]
